@@ -1,16 +1,19 @@
 #include "Catalogo.h"
 #include "Libro.h"
 #include <vector>
+using namespace std;
 
-Catalogo::Catalogo(){}
+Catalogo:: Catalogo(){}
+Libro* Catalogo:: getLibro(int posicion){
+    return lista_libros[posicion];
+}
 
-int Catalogo::getTamano(){
-    return lista_libros.size();
+std:: vector<Libro*> Catalogo:: getListaLibros(){
+    return lista_libros;
 }
-Libro Catalogo:: getLibro(int posicion){
-    return lista_libros.at(posicion);
-}
-void Catalogo:: setLibro(Libro libro){
+
+void Catalogo:: setLibro(Libro* libro){
+    
     lista_libros.push_back(libro);
 }
 

@@ -7,14 +7,14 @@
 class Catalogo {
     //Atributo
     public :
-        std:: vector<Libro> lista_libros;
+        std:: vector<Libro*> lista_libros;
         public :
     //Constructor
         Catalogo();
     //Metodos
-        int getTamano();
-        Libro getLibro(int);
-        void setLibro(Libro);
+        Libro* getLibro(int);
+        std:: vector<Libro*> getListaLibros();
+        void setLibro(Libro*);
     //Destructor    
         ~Catalogo();
 };

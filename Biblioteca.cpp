@@ -2,7 +2,6 @@
 #include "Biblioteca.h"
 #include <string>
 
-Biblioteca::Biblioteca(){}
 Biblioteca::Biblioteca(std:: string nombre, std:: string ubicacion, int cantidad_pisos, int cantidad_estantes, int cantidad_secciones) {
     this -> nombre = nombre;
     this -> ubicacion = ubicacion;
@@ -16,6 +15,7 @@ Biblioteca::Biblioteca(std:: string nombre, std:: string ubicacion, int cantidad
         arreglo[i] = new Catalogo*[cantidad_estantes];
         for(int j =0; j < cantidad_estantes; j++){
             arreglo[i][j] = new Catalogo[cantidad_secciones];
+            
         }
     }
 }
@@ -38,17 +38,20 @@ int Biblioteca:: getCantidadSecciones(){
     return cantidad_secciones;
 }
 
-Catalogo Biblioteca:: getCatalogo(int posicion_piso, int posicion_estante, int posicion_seccion){
-    return arreglo[posicion_piso][posicion_estante][posicion_seccion]
-    ;
+int Biblioteca:: getsizeCatalogo(){
+    return cantidad_pisos * cantidad_estantes * cantidad_pisos;
+}
+
+Catalogo*** Biblioteca::getCatalogo(){
+    return arreglo;
 }
 
 void Biblioteca::liberarArreglo(){
-    for ( int i = 0; i < cantidad_pisos; i++ ){
-        for ( int j = 0; j < cantidad_estantes; j++ ){
-            delete[] arreglo[i][j];
+    for (int i = 0; i < cantidad_pisos; ++i) {
+        for (int j = 0; j <cantidad_estantes; ++j){
+            delete [] arreglo[i][j];
         }
-        delete[] arreglo[i];
+        delete [] arreglo[i];
     }
     delete[] arreglo;
 }
